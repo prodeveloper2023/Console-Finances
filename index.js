@@ -123,7 +123,6 @@ var averageChange = totalChange / (totalMonths - 1);
 // Output
 console.log("Total Months: " + totalMonths);
 console.log("Net Total: $" + netTotal);
-console.log("Total Change: $" + totalChange);
 console.log("Average Change: $" + averageChange.toFixed(2));
 console.log(
   "Greatest Increase: " +
