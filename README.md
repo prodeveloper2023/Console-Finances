@@ -19,6 +19,7 @@ From a given Array of sales data a financial summary is being portrayed through 
 ## Usage
 
 Here is one screenshot showing the financial figure on the console:
+![Fianacial Summary](https://github.com/prodeveloper2023/Console-Finances/blob/main/images/Screenshot%202023-12-12%20at%204.13.35%20am.png)
 
 ## Credits
 
@@ -38,4 +39,4 @@ It's an individual assignment for now.
 
 ## Tests
 
-It's a static site at the moment and apart from getting response through git push and pull no other tests being done.
+It's a static site at the moment and apart from getting response through git push and pull no other tests being done. It displays the summary on a browser console.
