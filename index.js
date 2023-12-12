@@ -87,54 +87,52 @@ var finances = [
   ["Feb-2017", 671099],
 ];
 
-var totalMonths = 0;
+var totalMonths = finances.length;
 var netTotal = 0;
-var greatestIncrease = { date: "", amount: "" };
-var greatestDecrease = { date: "", amount: "" };
+var greatestIncrease = { date: "", amount: 0 };
+var greatestDecrease = { date: "", amount: 0 };
 var totalChange = 0;
 
 for (var i = 0; i < finances.length; i++) {
-  var currentProfit = finances[i][1];
-  var totalMonths = finances.length;
-  netTotal += currentProfit;
+  var month = finances[i][0];
+  var amount = finances[i][1];
 
-  // total change
+  // Calculate netTotal
+  netTotal += amount;
+
   if (i > 0) {
-    var previousProfit = finances[i - 1][1];
-    var change = currentProfit - previousProfit;
+    // Calculate the change from the previous month
+    var change = amount - finances[i - 1][1];
     totalChange += change;
-  }
 
-  // greatest increase and decrease
-  if (currentProfit > greatestIncrease.amount) {
-    greatestIncrease.date = finances[i][0];
-    greatestIncrease.amount = currentProfit;
-  }
-
-  if (currentProfit < greatestDecrease.amount) {
-    greatestDecrease.date = finances[i][0];
-    greatestDecrease.amount = currentProfit;
+    // Check for greatest increase and decrease
+    if (change > greatestIncrease.amount) {
+      greatestIncrease.date = month;
+      greatestIncrease.amount = change;
+    }
+    if (change < greatestDecrease.amount) {
+      greatestDecrease.date = month;
+      greatestDecrease.amount = change;
+    }
   }
 }
 
-// average change
+// Calculate the average change
 var averageChange = totalChange / (totalMonths - 1);
 
-// Output
-console.log("Total Months: " + totalMonths);
-console.log("Net Total: $" + netTotal);
+// Display Financial Analysis
+console.log("Financial Analysis");
+console.log("------------------");
+console.log("Total Months:", totalMonths);
+console.log("Total: $" + netTotal);
 console.log("Average Change: $" + averageChange.toFixed(2));
 console.log(
-  "Greatest Increase: " +
-    greatestIncrease.date +
-    " ($" +
-    greatestIncrease.amount +
-    ")"
+  "Greatest Increase in Profits/Losses:",
+  greatestIncrease.date,
+  "($" + greatestIncrease.amount + ")"
 );
 console.log(
-  "Greatest Decrease: " +
-    greatestDecrease.date +
-    " ($" +
-    greatestDecrease.amount +
-    ")"
+  "Greatest Decrease in Profits/Losses:",
+  greatestDecrease.date,
+  "($" + greatestDecrease.amount + ")"
 );
